@@ -1,0 +1,57 @@
+em-employee-list {
+  background: gray;
+
+  .container {
+    height: 100%;
+  }
+
+  .add-btn {
+    border-radius: 25px;
+  }
+
+  div.employee-list {
+    direction: ltr; 
+
+    .employee-btn {
+      background-color: darkgray;
+      cursor: pointer;
+
+      &.active { 
+        background-color: lightgrey; 
+        cursor: default;
+      }
+
+      .name {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        color: black;
+        width: 100%;
+        min-height: 2rem;
+      }
+
+      .type {
+        color: gray;
+        min-height: 1.2rem;
+      }
+
+      .delete-btn-container {
+        position: absolute;
+
+        span {
+          position: inherit;
+          right: 0;
+
+          .delete-btn {
+            cursor: pointer;
+            color: dimgrey ;
+
+            :hover {
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}

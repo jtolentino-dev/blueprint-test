@@ -1,0 +1,77 @@
+﻿<div class="container p-4 mt-2">
+    <div class="form p-3 h-100">
+        <div><span class="h3 title">Personal Information</span></div>
+        <div class="mt-5">
+            <div class="row pb-3">
+                <div class="col-sm-4 pl-3">
+                    <h6>Full Name</h6>
+                </div>
+                <div class="col-sm-8">
+                    <input class="w-100" 
+                           type="text" 
+                           *ngIf="value;else unloadedForm" 
+                           [(ngModel)]="value.fullName"
+                           [disabled]="isDisabled" />
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-sm-4 pl-3">
+                    <h6>Address</h6>
+                </div>
+                <div class="col-sm-8">
+                    <input class="w-100" 
+                           type="text" 
+                           *ngIf="value;else unloadedForm" 
+                           [(ngModel)]="value.address"
+                           [disabled]="isDisabled" />
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-sm-4 pl-3">
+                    <h6>Phone Number</h6>
+                </div>
+                <div class="col-sm-8">
+                    <input class="w-100"
+                           type="text" 
+                           mask="(000) 000-0000" 
+                           [showMaskTyped]="true" 
+                           *ngIf="value;else unloadedForm" 
+                           [(ngModel)]="value.phoneNumber"
+                           [disabled]="isDisabled" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 pb-3">
+                    <h6>Position</h6>
+                </div>
+                <div class="col-sm-8">
+                    <select class="w-100 pb-1" 
+                            *ngIf="value;else unloadedForm" 
+                            [(ngModel)]="value.employeeTypeId"
+                            [disabled]="isDisabled">
+                        <option [value]="''">-- Select --</option>
+                        <option *ngFor="let employeeType of employeeTypes" 
+                                [value]="employeeType.id" >
+                                {{employeeType.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <ng-template #unloadedForm>
+                <input class="w-100" type="text" *ngIf="!value" disabled />
+            </ng-template>
+        </div>
+
+        <div class="row d-flex h-50">
+            <button class="ml-auto mt-auto mr-3" 
+                [disabled]="!getIsValid()"
+                (click)="save()">
+                Save
+            </button>
+        </div>
+    </div>
+</div>

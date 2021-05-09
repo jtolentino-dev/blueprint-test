@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ title || 'Confirm' }}</h4>
+    <button
+      id="dismiss-confirm-modal"
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="onClose(false)"
+      [ngClass]="{ invisible: !isClosable }"
+    >
+      X
+    </button>
+  </div>
+  <div class="modal-body">
+    {{ body || 'Please confirm your action' }}
+  </div>
+  <div
+    id="close-confirm-modal"
+    class="modal-footer align-items-start justify-content-end"
+  >
+    <button
+      *ngIf="showConfirmButton"
+      id="success-confirm-modal"
+      class="modal-button"
+      type="button"
+      (click)="onClose(true)"
+    >
+      {{ confirmButton || 'OK' }}
+    </button>
+    <button
+      *ngIf="showCancelButton"
+      data-dismiss="modal"
+      class="modal-button"
+      (click)="onClose(false)"
+    >
+      {{ cancelButton || 'Cancel' }}
+    </button>
+  </div>
+  
